@@ -1,10 +1,21 @@
-const express = require('express');
-const app = express();
- 
-app.get('/', (req, res) => {
-  res.send("Hello This is Test");
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://sarvesh:mevo123@testingcluster.tg9uqrx.mongodb.net/?retryWrites=true&w=majority&appName=TestingCluster";
+
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
- 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Web Server is listening at port ' + (process.env.PORT || 3000));
-});
+
+async function run() {
+  try {
+    await client.connect();
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);
