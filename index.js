@@ -11,10 +11,18 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
-    await client.db("mevo").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    console.log();
+    const database = client.db("mevo");
+    const users = database.collection("users");
+    const user = {
+        Name: "testUser",
+        Password : "test123"
+    }
+    /*
+    const result = await users.insertOne(user);
+    if(result.acknowledged == true){
+        console.log("Successfully Inserted");
+    }
+    */
   } finally {
     await client.close();
   }
