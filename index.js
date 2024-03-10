@@ -14,6 +14,7 @@ app.post('/data', (req, res) => {
   const data = req.body.name;
   // Process the received data
   res.send('Data received: ' + data);
+  console.log('Data is ::' + data)
 });
 
 app.listen(port, () => {
