@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoClient = require('mongodb').MongoClient
-
+const PORT = process.env.PORT || 4000
 const url = "mongodb+srv://sarvesh:mevo123@testingcluster.tg9uqrx.mongodb.net/?retryWrites=true&w=majority&appName=TestingCluster"
 
 app.use(express.json())
@@ -69,6 +69,6 @@ mongoClient.connect(url, (err, db) => {
 
 })
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000...")
+app.listen(PORT, () => {
+    console.log(`Serverrrrrrrr listening on port ${port}`)
 })
