@@ -5,7 +5,9 @@ const PORT = process.env.PORT || 4000
 const url = "mongodb+srv://sarvesh:mevo123@testingcluster.tg9uqrx.mongodb.net/?retryWrites=true&w=majority&appName=TestingCluster"
 
 app.use(express.json())
-
+app.get('/',function(req,res) {
+  res.sendFile('index.html');
+});
 mongoClient.connect(url, (err, db) => {
 
     if (err) {
