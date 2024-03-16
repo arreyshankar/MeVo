@@ -6,5 +6,8 @@ const testData = {
   email: 'user@mail.com',
   password: '12345'
 }
-app.get('/', (req, res) => res.send(testData))
+app.get("/url", (req, res, next) => {
+    res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+    res.json(testData);
+   });
 app.listen(port, () => console.log(`Server listening on port ${port}`))
